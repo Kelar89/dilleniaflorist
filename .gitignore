@@ -35,7 +35,7 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+git config --global user.email "emailanda@gmail.com"
 # typescript
 *.tsbuildinfo
 next-env.d.ts
