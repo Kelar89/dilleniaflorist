@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, ShoppingBag, Star, Quote, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Quote, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { useCart } from "@/components/context/CartContext";
 import { allProductsDatabase } from "@/components/context/productsData";
 
@@ -16,7 +16,7 @@ const heroImages = [
 const reviews = [
   { name: "Siti Rahma", role: "Klien Korporat", text: "Rangkaian bunga meja bulanan untuk kantor kami selalu memukau. Sangat direkomendasikan untuk bisnis yang menghargai impresi pertama.", rating: 5, avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" },
   { name: "Arif Wijaya", role: "Pengantin Pernikahan", text: "Hand bouquet kustom rancangan tim Dillenia benar-benar melengkapi momen sakral kami. Kesegaran bunganya bertahan sangat lama.", rating: 5, avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=200&auto=format&fit=crop" },
-  { name: "Clara Dian", role: "Pelanggan Setia", text: "Proses pemesanan via laci keranjang web-nya sangat praktis, dan format pesan otomatis ke WhatsApp membuat transaksi selesai dalam hitungan detik.", rating: 5, avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" }
+  { name: "Clara Dian", role: "Pelanggan Setia", text: "Proses reservasi via layanan concierge digitalnya sangat eksklusif dan praktis. Format penjadwalan otomatis ke WhatsApp membuat pengaturan pengiriman selesai dengan sangat elegan.", rating: 5, avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" }
 ];
 
 export default function Home() {
@@ -43,7 +43,7 @@ export default function Home() {
           <div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">Ekspresikan <br />Perasaan, <br /><span className="text-primary">Tanpa Kata.</span></h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-lg">Kurasi mahakarya floral premium yang dirancang khusus untuk mewakili emosi mendalam Anda di setiap momen berharga.</p>
-            <Link href="/products" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold shadow-lg hover:bg-accent transition-colors">Jelajahi Koleksi <ArrowRight size={18} /></Link>
+            <Link href="/products" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold shadow-lg hover:bg-accent transition-colors">Eksplorasi Mahakarya <ArrowRight size={18} /></Link>
           </div>
           <div className="relative w-full aspect-[4/5] max-w-md mx-auto overflow-hidden rounded-[2.5rem] border border-border shadow-2xl">
             <Image src={heroImages[heroIdx]} alt="Premium Arrangement" fill priority className="object-cover" />
@@ -60,7 +60,7 @@ export default function Home() {
               <p className="text-muted-foreground mt-2 max-w-lg">Pilih jalur layanan yang paling sesuai dengan kebutuhan momen spesial Anda.</p>
             </div>
             <Link href="/custom" className="hidden md:flex items-center gap-2 text-primary font-semibold hover:underline">
-              <Sparkles size={18}/> Request Kustom
+              <Sparkles size={18}/> Konsultasi Personal
             </Link>
           </div>
 
@@ -70,10 +70,10 @@ export default function Home() {
             <Link href="/corporate" className="md:col-span-5 relative rounded-3xl overflow-hidden group h-[300px] md:h-full block">
               <Image src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?q=80&w=800&auto=format&fit=crop" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" alt="Corporate" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 transition-colors group-hover:bg-black/40">
-                <h3 className="text-2xl font-bold text-white mb-2">Corporate & Event</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Corporate & Eksklusif</h3>
                 <p className="text-white/80 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">Tingkatkan citra profesional perusahaan Anda dengan instalasi floral premium.</p>
                 <span className="inline-flex items-center gap-2 text-white font-semibold text-sm">
-                  Pelajari <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
+                  Eksplorasi Layanan <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
                 </span>
               </div>
             </Link>
@@ -84,7 +84,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 transition-colors group-hover:bg-black/40">
                 <h3 className="text-2xl font-bold text-white mb-2">Pernikahan Sakral</h3>
                 <span className="inline-flex items-center gap-2 text-white font-semibold text-sm">
-                  Lihat Portofolio <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
+                  Lihat Koleksi <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
                 </span>
               </div>
             </Link>
@@ -95,7 +95,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 transition-colors group-hover:bg-black/40">
                 <h3 className="text-2xl font-bold text-white mb-2">Koleksi Bunga Meja</h3>
                 <span className="inline-flex items-center gap-2 text-white font-semibold text-sm">
-                  Pesan Sekarang <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
+                  Jadwalkan Pengiriman <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform"/>
                 </span>
               </div>
             </Link>
@@ -107,7 +107,7 @@ export default function Home() {
       {/* SEKSI PRODUK UNGGULAN */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="text-center mb-16"><h2 className="text-3xl font-bold mb-2">Koleksi Terpopuler</h2></div>
+          <div className="text-center mb-16"><h2 className="text-3xl font-bold mb-2">Mahakarya Pilihan Utama</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featured.map((product) => (
               <div key={product.id} className="group flex flex-col bg-card rounded-3xl overflow-hidden border border-border shadow-sm">
@@ -118,8 +118,8 @@ export default function Home() {
                   <h3 className="text-lg font-bold mb-1">{product.title}</h3>
                   <div className="font-bold text-primary mb-4">{formatRupiah(product.price)}</div>
                   <div className="grid grid-cols-2 gap-3 mt-auto">
-                    <Link href={`/products/${product.id}`} className="py-2 bg-muted text-center rounded-xl text-xs font-semibold hover:bg-border transition-colors">Detail</Link>
-                    <button onClick={() => addToCart({ productId: product.id, title: product.title, variant: "Standard", price: product.price, quantity: 1, image: product.image })} className="py-2 bg-primary text-primary-foreground text-center rounded-xl text-xs font-semibold flex items-center justify-center gap-1 hover:bg-accent transition-colors"><ShoppingBag size={12}/> + Keranjang</button>
+                    <Link href={`/products/${product.id}`} className="py-2 bg-muted text-center rounded-xl text-xs font-semibold hover:bg-border transition-colors">Lihat Detail</Link>
+                    <button onClick={() => addToCart({ productId: product.id, title: product.title, variant: "Standard", price: product.price, quantity: 1, image: product.image })} className="py-2 bg-primary text-primary-foreground text-center rounded-xl text-xs font-semibold flex items-center justify-center gap-1 hover:bg-accent transition-colors"><Sparkles size={12}/> Kirim Kejutan</button>
                   </div>
                 </div>
               </div>

@@ -3,9 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-// Pastikan path ini sesuai dengan letak CartContext Anda
 import { CartProvider } from "@/components/context/CartContext"; 
-// Jika Anda memiliki Navbar atau Footer, Anda bisa mengimpornya kembali di bawah baris ini
+// Memanggil kembali komponen navigasi dan footer Anda
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,8 +68,7 @@ export default function RootLayout({
       
       <body className={inter.className}>
         {/* ========================================================================= */}
-        {/* NOSCRIPT GOOGLE TAG MANAGER (Penopang saat JavaScript pengunjung mati) */}
-        {/* CARA UPDATE: Ubah teks 'GTM-XXXXXXX' di bawah ini agar sama dengan ID di atas */}
+        {/* NOSCRIPT GOOGLE TAG MANAGER */}
         {/* ========================================================================= */}
         <noscript>
           <iframe
@@ -80,11 +80,15 @@ export default function RootLayout({
         </noscript>
 
         <CartProvider>
-          {/* Tambahkan kembali komponen <Navbar /> Anda di sini jika ada */}
+          {/* Menu Bar Dimunculkan Kembali */}
+          <Navbar />
           
-          {children}
+          <main>
+            {children}
+          </main>
           
-          {/* Tambahkan kembali komponen <Footer /> Anda di sini jika ada */}
+          {/* Footer Dimunculkan Kembali */}
+          <Footer />
         </CartProvider>
       </body>
     </html>
