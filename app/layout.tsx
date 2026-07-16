@@ -4,15 +4,17 @@ import "./globals.css";
 import Script from "next/script";
 
 import { CartProvider } from "@/components/context/CartContext"; 
-// Memanggil kembali komponen navigasi dan footer Anda
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
+// INI KABEL YANG TERLUPAKAN: Mengimpor laci keranjang
+import CartDrawer from "@/components/ui/CartDrawer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dillenia Florist",
-  description: "Kurasi mahakarya floral premium untuk setiap momen berharga Anda.",
+  title: "Dillenia Florist | Layanan Concierge Floral Premium",
+  description: "Kurasi mahakarya floral premium untuk setiap momen berharga Anda. Layanan florist eksklusif dengan dedikasi pada detail dan estetika.",
 };
 
 export default function RootLayout({
@@ -20,13 +22,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Dillenia Florist",
+    "image": "https://dillenia.id/logo.png",
+    "@id": "https://dillenia.id",
+    "url": "https://dillenia.id",
+    "telephone": "+6287734346287",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Pasar Bunga Cikini",
+      "addressLocality": "Jakarta",
+      "addressRegion": "Jakarta",
+      "addressCountry": "ID"
+    },
+    "priceRange": "$$$",
+    "description": "Layanan florist premium dengan dedikasi pada detail dan estetika."
+  };
+
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <head>
-        {/* ========================================================================= */}
-        {/* 1. META PIXEL (FACEBOOK) - DUMMY TRACKING */}
-        {/* CARA UPDATE: Ubah teks 'GANTI-DENGAN-PIXEL-ID-ASLI' dengan nomor Pixel Anda */}
-        {/* ========================================================================= */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -47,10 +69,6 @@ export default function RootLayout({
           }}
         />
 
-        {/* ========================================================================= */}
-        {/* 2. GOOGLE TAG MANAGER (GTM) - DUMMY TRACKING */}
-        {/* CARA UPDATE: Ubah teks 'GTM-XXXXXXX' dengan nomor Container GTM Anda */}
-        {/* ========================================================================= */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -66,10 +84,7 @@ export default function RootLayout({
         />
       </head>
       
-      <body className={inter.className}>
-        {/* ========================================================================= */}
-        {/* NOSCRIPT GOOGLE TAG MANAGER */}
-        {/* ========================================================================= */}
+      <body className={inter.className} suppressHydrationWarning>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
@@ -80,15 +95,18 @@ export default function RootLayout({
         </noscript>
 
         <CartProvider>
-          {/* Menu Bar Dimunculkan Kembali */}
           <Navbar />
           
           <main>
             {children}
           </main>
           
-          {/* Footer Dimunculkan Kembali */}
           <Footer />
+          
+          <FloatingWhatsApp />
+          
+          {/* MENGAKTIFKAN LACI KERANJANG DI SINI */}
+          <CartDrawer />
         </CartProvider>
       </body>
     </html>
